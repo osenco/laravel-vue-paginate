@@ -1,9 +1,9 @@
-import Paginate from "./components/Pagination.vue";
+import Pagination from "./components/Pagination.vue";
 
-const ComponentLibrary = {
+const paginate = {
 	install(Vue: any, options = {}) {
-		Vue.component("paginate", Paginate);
+		Vue.component("paginate", Pagination);
 	},
 };
 
-export default ComponentLibrary;
+export default paginate;

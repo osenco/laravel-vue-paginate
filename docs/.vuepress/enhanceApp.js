@@ -1,5 +1,5 @@
-import ComponentLibrary from './../../src/main.ts'
+import paginate from './../../src/main.ts'
 
 export default ({ Vue, options, router, siteData }) => {
-  Vue.use(ComponentLibrary)
+  Vue.use(paginate)
 }
