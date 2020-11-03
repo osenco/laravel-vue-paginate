@@ -1,13 +1,30 @@
-# laravel-vue-paginate
+# Laravel Vue Paginate
 
-## Project setup
+## Usage (Vue 3)
+```vue
+<template>
+	<paginate :data="data"></paginate>
+</template>
+
+<script lang="ts">
+	import { defineComponent, computed } from "vue";
+    import axios from "axios"
+	export default defineComponent({
+		setup() {
+			const data = computed(() => {
+				return axios("/api/users/").then((res: any) => res.data);
+            });
+            
+            return { data }
+		},
+	});
+</script>
+```
+
+## Developer Mode
+### Project setup
 ```
 yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn serve
 ```
 
 ### Compiles and minifies for production
