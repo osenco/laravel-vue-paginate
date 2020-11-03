@@ -1,4 +1,5 @@
 <template>
+    ...
 	<paginate :data="data"></paginate>
 </template>
 

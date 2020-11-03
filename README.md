@@ -33,6 +33,7 @@ app.use(paginate);
 
 ```vue
 <template>
+    ...
 	<paginate :data="data"></paginate>
 </template>
 
