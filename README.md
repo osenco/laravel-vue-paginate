@@ -1,7 +1,35 @@
 # Laravel Vue Paginate
+
 Vue pagination component for Laravel API backend.
 
-## Usage (Vue 3)
+### Installation
+
+Install using `npm`
+
+```cmd
+npm-i @osenco/laravel-vue-paginate
+```
+
+Or with `yarn`
+
+```cmd
+yarn add @osenco/laravel-vue-paginate
+```
+
+## Usage
+
+### Include Plugin
+
+```ts
+//main.ts
+import { createApp } from "vue";
+import paginate from  "@osenco/laravel-vue-paginate";
+
+const app = Vue.createApp(...)
+app.use(paginate);
+```
+
+### In Component
 
 ```vue
 <template>
