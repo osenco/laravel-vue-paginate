@@ -25,7 +25,7 @@ yarn add @osenco/laravel-vue-paginate
 import { createApp } from "vue";
 import paginate from  "@osenco/laravel-vue-paginate";
 
-const app = Vue.createApp(...)
+...
 app.use(paginate);
 ```
 
@@ -41,7 +41,8 @@ app.use(paginate);
 
 	export default defineComponent({
 		setup() {
-			const data = computed(() => fetch("/api/users/").then((res: any) => res.json());
+			const data = computed(() => fetch("/api/users/")
+                .then((res: any) => res.json());
 
 			return { data };
 		},
