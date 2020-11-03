@@ -34,23 +34,34 @@ app.use(paginate);
 ```vue
 <template>
     ...
-	<paginate :data="data"></paginate>
+	<paginate :data="data" :changed="fetchRecords"></paginate>
 </template>
 
 <script lang="ts">
 	//import axios from "axios"
-	import { defineComponent, computed } from "vue";
+	import { defineComponent, ref, onMounted } from "vue";
 
 	export default defineComponent({
 		setup() {
-			const data = computed(() => fetch("/api/users/")
-                .then((res: any) => res.json());
-			
-			// const data = computed(() => {
-			// 	return axios.get("path/to/api/").then((res: any) => res.data);
-            // });
+			const data = ref();
+            
+            function fetchRecords() {
+                fetch("/api/users/")
+                .then((res: any) => {
+                    data.value = res.json()
+                }
+            }
 
-			return { data };
+            // Or using axios
+            // function fetchRecords() {
+            //     axios.get("/api/users/")
+            //     .then((res: any) => {
+            //         data.value = res.json()
+            //     }
+            // }
+            onMounted(() => fetchRecords());
+
+			return { data, fetchRecords };
 		},
 	});
 </script>
