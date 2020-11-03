@@ -22,8 +22,8 @@ yarn add @osenco/laravel-vue-paginate
 
 ```ts
 //main.ts
-import { createApp } from "vue";
-import paginate from  "@osenco/laravel-vue-paginate";
+...
+import paginate from "@osenco/laravel-vue-paginate";
 
 ...
 app.use(paginate);
@@ -56,7 +56,7 @@ app.use(paginate);
 			// function fetchRecords() {
 			//     axios.get("/api/users/")
 			//     .then((res: any) => {
-			//         data.value = res.json()
+			//         data.value = res.data
 			//     }
 			// }
 			onMounted(() => fetchRecords());

@@ -22,7 +22,7 @@
 			// function fetchRecords() {
 			//     axios.get("/api/users/")
 			//     .then((res: any) => {
-			//         data.value = res.json()
+			//         data.value = res.data
 			//     }
 			// }
 			onMounted(() => fetchRecords());
