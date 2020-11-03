@@ -34,7 +34,7 @@ app.use(paginate);
 ```vue
 <template>
 	...
-    <!-- type can be either 'bs' for Bootstrap or 'tw' for Tailwind -->
+	<!-- type can be either 'bs' for Bootstrap or 'tw' for Tailwind; default is Bootstrap -->
 	<paginate :data="data" :changed="fetchRecords" type="bs"></paginate>
 </template>
 
@@ -46,26 +46,26 @@ app.use(paginate);
 		setup() {
 			const data = ref();
 
-	           function fetchRecords() {
-	               fetch("/api/users/")
-	               .then((res: any) => {
-	                   data.value = res.json()
-	               })
-	           }
+			function fetchRecords() {
+				fetch("/api/users/").then((res: any) => {
+					data.value = res.json();
+				});
+			}
 
-	           // Or using axios
-	           // function fetchRecords() {
-	           //     axios.get("/api/users/")
-	           //     .then((res: any) => {
-	           //         data.value = res.json()
-	           //     }
-	           // }
-	           onMounted(() => fetchRecords());
+			// Or using axios
+			// function fetchRecords() {
+			//     axios.get("/api/users/")
+			//     .then((res: any) => {
+			//         data.value = res.json()
+			//     }
+			// }
+			onMounted(() => fetchRecords());
 
 			return { data, fetchRecords };
 		},
 	});
 </script>
+
 ```
 
 ## Developer Mode
