@@ -1,6 +1,7 @@
 <template>
 	...
-	<paginate :data="data" :changed="fetchRecords"></paginate>
+    <!-- type can be either 'bs' for Bootstrap or 'tw' for Tailwind -->
+	<paginate :data="data" :changed="fetchRecords" type="bs"></paginate>
 </template>
 
 <script lang="ts">
@@ -15,7 +16,7 @@
 	               fetch("/api/users/")
 	               .then((res: any) => {
 	                   data.value = res.json()
-	               }
+	               })
 	           }
 
 	           // Or using axios

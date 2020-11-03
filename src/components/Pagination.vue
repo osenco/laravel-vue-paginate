@@ -9,6 +9,11 @@
 				required: false,
 				default: 3,
 			},
+			type: {
+				type: String,
+				required: false,
+				default: 'bs',
+			},
 			data: {
 				type: Object,
 				required: true,
@@ -77,7 +82,7 @@
 	});
 </script>
 <template>
-	<ul class="pagination">
+	<ul class="pagination" v-if="type === 'bs'">
 		<li class="page-item">
 			<a
 				class="page-link"
@@ -128,6 +133,7 @@
 				class="page-link"
 				type="button"
 				@click="onClickNextPage"
+				:class="{ disabled: isOnLastPage }"
 				:disabled="isOnLastPage"
 			>
 				Next
@@ -144,6 +150,68 @@
 			>
 				Last
 			</a>
+		</li>
+	</ul>
+
+	<ul class="flex list-reset pl-0 rounded" v-else>
+		<li class="page-item">
+			<button
+				type="button"
+				class="relative block py-2 px-3 -ml-px leading-normal text-blue bg-white border border-gray-200 no-underline hover:text-blue-800 hover:bg-gray-200"
+				@click="onClickFirstPage"
+				:disabled="isOnFirstPage"
+				:class="{ disabled: isOnFirstPage }"
+			>
+				First
+			</button>
+		</li>
+
+		<li class="page-item">
+			<button
+				type="button"
+				class="relative block py-2 px-3 -ml-px leading-normal text-blue bg-white border border-gray-200 no-underline hover:text-blue-800 hover:bg-gray-200"
+				@click="onClickPreviousPage"
+				:disabled="isOnFirstPage"
+				:class="{ disabled: isOnFirstPage }"
+			>
+				Previous
+			</button>
+		</li>
+
+		<li v-for="page in pages" class="page-item" :key="page.name">
+			<button
+				type="button"
+				class="relative block py-2 px-3 -ml-px leading-normal text-blue bg-white border border-gray-200 no-underline hover:text-blue-800 hover:bg-gray-200"
+				@click="onClickPage(page.name)"
+				:disabled="page.isDisabled"
+				:class="{ active: isPageActive(page.name) }"
+			>
+				{{ page.name }}
+			</button>
+		</li>
+
+		<li class="page-item">
+			<button
+				type="button"
+				class="relative block py-2 px-3 -ml-px leading-normal text-blue bg-white border border-gray-200 no-underline hover:text-blue-800 hover:bg-gray-200"
+				@click="onClickNextPage"
+				:class="{ disabled: isOnLastPage }"
+				:disabled="isOnLastPage"
+			>
+				Next
+			</button>
+		</li>
+
+		<li class="page-item">
+			<button
+				type="button"
+				class="relative block py-2 px-3 -ml-px leading-normal text-blue bg-white border border-gray-200 no-underline hover:text-blue-800 hover:bg-gray-200"
+				:class="{ disabled: isOnLastPage }"
+				@click="onClickLastPage"
+				:disabled="isOnLastPage"
+			>
+				Last
+			</button>
 		</li>
 	</ul>
 </template>
